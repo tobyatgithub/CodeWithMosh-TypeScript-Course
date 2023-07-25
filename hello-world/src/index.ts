@@ -32,7 +32,7 @@ enum StringSize {
 let mySize: Size = Size.Medium;
 console.log(mySize); // 2
 
-// default value
+// Function default value
 function calculateTax(income: number, taxYear = 2022): number {
   if (income < 50_000) {
     return income * 1.2;
@@ -42,3 +42,19 @@ function calculateTax(income: number, taxYear = 2022): number {
   }
   return income * 1.4;
 }
+
+// Object
+let employee: {
+  readonly id: number; // prevent us from modify it
+  name: string;
+  fax?: number; // optional
+  retire: (date: Date) => void;
+} = {
+  id: 1,
+  name: "",
+  retire: (date: Date) => {
+    console.log(date);
+  },
+};
+employee.name = "mosh";
+// employee.id = 2; // -> error
