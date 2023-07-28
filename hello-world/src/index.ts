@@ -46,3 +46,9 @@ let textBox: UIWidget = {
   drag: () => {},
   resize: () => {},
 };
+
+
+// Literal *exact, specific value
+type Quantity = 50 | 100;
+type Metric = 'cm' | 'inch';
+let quantity: Quantity = 100; // can only be 50 or 100
