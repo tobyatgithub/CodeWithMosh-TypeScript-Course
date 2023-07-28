@@ -15,3 +15,34 @@ let employee: Employee = {
 };
 employee.name = "mosh";
 // employee.id = 2; // -> error
+
+// weight : number | string is a "Union type"
+function kgToLbs(weight: number | string): number {
+  // we can narrow the type for compilor here
+  if (typeof weight === "number") {
+    // inside this block, the compilor will know weight is num
+    return weight * 2.2;
+  } else {
+    // inside this block, the compilor will know weight is str
+    return parseInt(weight) * 2.2;
+  }
+}
+
+console.log(kgToLbs(10));
+console.log(kgToLbs("10kg"));
+
+// intersection type
+type Draggable = {
+  drag: () => void;
+};
+
+type Resizeable = {
+  resize: () => void;
+};
+
+type UIWidget = Draggable & Resizeable;
+let textBox: UIWidget = {
+  // here, the compilor will know both drag() and resize() are required
+  drag: () => {},
+  resize: () => {},
+};
