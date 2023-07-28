@@ -1,3 +1,4 @@
+// 2- Type aliases
 type Employee = {
   readonly id: number; // prevent us from modify it
   name: string;
@@ -16,6 +17,7 @@ let employee: Employee = {
 employee.name = "mosh";
 // employee.id = 2; // -> error
 
+// 3 - Union type
 // weight : number | string is a "Union type"
 function kgToLbs(weight: number | string): number {
   // we can narrow the type for compilor here
@@ -31,7 +33,7 @@ function kgToLbs(weight: number | string): number {
 console.log(kgToLbs(10));
 console.log(kgToLbs("10kg"));
 
-// intersection type
+// 4 - Intersection type
 type Draggable = {
   drag: () => void;
 };
@@ -47,14 +49,34 @@ let textBox: UIWidget = {
   resize: () => {},
 };
 
-// Literal *exact, specific value
+// 5 - Literal types: *exact, specific value
 type Quantity = 50 | 100;
 type Metric = "cm" | "inch";
 let quantity: Quantity = 100; // can only be 50 or 100
 
+// 6 - nullable types
 function greet(name: string | null | undefined) {
   if (name) console.log(name.toUpperCase());
   else console.log("Hola!");
 }
 
 greet(null);
+
+// 7 - Optional chaining
+type Customer = { birthday?: Date };
+function getCustomer(id: number): Customer | null | undefined {
+  return id === 0 ? null : { birthday: new Date() };
+}
+
+let customer = getCustomer(0);
+console.log(customer?.birthday); // need ? bcz customer can be null
+// identical to with if(customer !== null && customer !== undefined)
+console.log(customer?.birthday?.getFullYear);
+
+// Optional element access operator (for array)
+// customerArray?.[0]
+
+// Optional call
+let log: any = null;
+// log("a"); // will crash
+log?.("a");
