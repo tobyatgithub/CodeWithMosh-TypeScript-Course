@@ -80,3 +80,12 @@ console.log(customer?.birthday?.getFullYear);
 let log: any = null;
 // log("a"); // will crash
 log?.("a");
+
+// 8 - Nullish coaelscing operator ??
+let speed: number | null = null;
+let ride = {
+  // falsy (undefined, null, '', false, 0)
+  // speed: speed || 30 // <- not good bcz a valid 0 will be overwritten
+  // speed: speed !== null ? speed : 30, // this is ok but the next link is equal and shorter
+  speed: speed ?? 30 // === if null or undefined use 30
+};
