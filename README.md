@@ -87,3 +87,15 @@ enum StringSize {
 let mySize: Size = Size.Medium
 console.log(mySize) // 2
 ```
+
+
+## Unit 4 - Advanced Types
+Most notes are in the `hello-world/src/index.ts` file.
+
+### 10 - unknown type
+It is recommended to use `unknown` type instead of `any` type.
+The reason being that `unknown` type require us to do type check where `any` type will allow anything (unsafe).
+
+### 11 - the never type
+It is recommended to add `never` to function returns if it will never return (such as a `while (true` loop or a `throw new error` method).
+And if we turn `// "allowUnreachableCode": true,` to false, the compilor will help us find all unreachable code (with the help of this `never` type hint.)
