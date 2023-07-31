@@ -106,3 +106,14 @@ let phone2 = <HTMLInputElement>document.getElementById("phone"); //same as above
 // the return value of phone is NOT HTMLInputElement, aka, if phone
 // doesnt have value. Next line will crash.
 phone.value;
+
+
+// 10 - unknown type
+// // unknown type is better than any type
+// function unknownType(document: any) {
+//   document.move()
+//   ...
+// }
+// function unknownType(document: unknown){
+//   document.move()
+// }
