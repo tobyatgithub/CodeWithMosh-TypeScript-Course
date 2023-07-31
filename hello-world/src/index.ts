@@ -87,5 +87,22 @@ let ride = {
   // falsy (undefined, null, '', false, 0)
   // speed: speed || 30 // <- not good bcz a valid 0 will be overwritten
   // speed: speed !== null ? speed : 30, // this is ok but the next link is equal and shorter
-  speed: speed ?? 30 // === if null or undefined use 30
+  speed: speed ?? 30, // === if null or undefined use 30
 };
+
+// 9 - type assertions, as
+// 'as' is saying that Im certain about the return type of a variable
+// so to allow better access to the properties, we tell the compilor
+// that this element is a more specific type (instead of a more general one)
+
+// e.g. here, without this as, the compilor only know phone is a general
+// HTML element. And we wont be able to access the value (error warning)
+// However, if we specify HTMLInputElmenet, then we will get access
+// to all the method and properties of HTMLInput Element
+let phone = document.getElementById("phone") as HTMLInputElement;
+let phone2 = <HTMLInputElement>document.getElementById("phone"); //same as above
+
+// notice that the 'as' doesnt do any type conversion, so if
+// the return value of phone is NOT HTMLInputElement, aka, if phone
+// doesnt have value. Next line will crash.
+phone.value;
